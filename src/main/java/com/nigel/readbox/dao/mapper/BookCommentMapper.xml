@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nigel.readbox.dao.BookCommentMapper" >
+  <resultMap id="BaseResultMap" type="com.nigel.readbox.entity.BookComment" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="comment_code" property="commentCode" jdbcType="VARCHAR" />
+    <result column="comment_contents" property="commentContents" jdbcType="VARCHAR" />
+    <result column="comment_time" property="commentTime" jdbcType="TIMESTAMP" />
+    <result column="comment_user" property="commentUser" jdbcType="VARCHAR" />
+    <result column="comment_ISBN" property="commentIsbn" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, comment_code, comment_contents, comment_time, comment_user, comment_ISBN
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.nigel.readbox.entity.BookCommentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from book_comment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from book_comment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from book_comment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.nigel.readbox.entity.BookCommentExample" >
+    delete from book_comment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.nigel.readbox.entity.BookComment" >
+    insert into book_comment (id, comment_code, comment_contents, 
+      comment_time, comment_user, comment_ISBN
+      )
+    values (#{id,jdbcType=INTEGER}, #{commentCode,jdbcType=VARCHAR}, #{commentContents,jdbcType=VARCHAR}, 
+      #{commentTime,jdbcType=TIMESTAMP}, #{commentUser,jdbcType=VARCHAR}, #{commentIsbn,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.nigel.readbox.entity.BookComment" >
+    insert into book_comment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="commentCode != null" >
+        comment_code,
+      </if>
+      <if test="commentContents != null" >
+        comment_contents,
+      </if>
+      <if test="commentTime != null" >
+        comment_time,
+      </if>
+      <if test="commentUser != null" >
+        comment_user,
+      </if>
+      <if test="commentIsbn != null" >
+        comment_ISBN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="commentCode != null" >
+        #{commentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="commentContents != null" >
+        #{commentContents,jdbcType=VARCHAR},
+      </if>
+      <if test="commentTime != null" >
+        #{commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentUser != null" >
+        #{commentUser,jdbcType=VARCHAR},
+      </if>
+      <if test="commentIsbn != null" >
+        #{commentIsbn,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.nigel.readbox.entity.BookCommentExample" resultType="java.lang.Integer" >
+    select count(*) from book_comment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update book_comment
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.commentCode != null" >
+        comment_code = #{record.commentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commentContents != null" >
+        comment_contents = #{record.commentContents,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commentTime != null" >
+        comment_time = #{record.commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.commentUser != null" >
+        comment_user = #{record.commentUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commentIsbn != null" >
+        comment_ISBN = #{record.commentIsbn,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update book_comment
+    set id = #{record.id,jdbcType=INTEGER},
+      comment_code = #{record.commentCode,jdbcType=VARCHAR},
+      comment_contents = #{record.commentContents,jdbcType=VARCHAR},
+      comment_time = #{record.commentTime,jdbcType=TIMESTAMP},
+      comment_user = #{record.commentUser,jdbcType=VARCHAR},
+      comment_ISBN = #{record.commentIsbn,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nigel.readbox.entity.BookComment" >
+    update book_comment
+    <set >
+      <if test="commentCode != null" >
+        comment_code = #{commentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="commentContents != null" >
+        comment_contents = #{commentContents,jdbcType=VARCHAR},
+      </if>
+      <if test="commentTime != null" >
+        comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentUser != null" >
+        comment_user = #{commentUser,jdbcType=VARCHAR},
+      </if>
+      <if test="commentIsbn != null" >
+        comment_ISBN = #{commentIsbn,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nigel.readbox.entity.BookComment" >
+    update book_comment
+    set comment_code = #{commentCode,jdbcType=VARCHAR},
+      comment_contents = #{commentContents,jdbcType=VARCHAR},
+      comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      comment_user = #{commentUser,jdbcType=VARCHAR},
+      comment_ISBN = #{commentIsbn,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

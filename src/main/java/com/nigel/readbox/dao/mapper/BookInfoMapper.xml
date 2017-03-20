@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nigel.readbox.dao.BookInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.nigel.readbox.entity.BookInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="book_ISBN" property="bookIsbn" jdbcType="VARCHAR" />
+    <result column="book_name" property="bookName" jdbcType="VARCHAR" />
+    <result column="book_author" property="bookAuthor" jdbcType="VARCHAR" />
+    <result column="book_publish_date" property="bookPublishDate" jdbcType="TIMESTAMP" />
+    <result column="book_publish_house" property="bookPublishHouse" jdbcType="VARCHAR" />
+    <result column="book_price" property="bookPrice" jdbcType="DECIMAL" />
+    <result column="book_photo" property="bookPhoto" jdbcType="VARCHAR" />
+    <result column="book_introduce" property="bookIntroduce" jdbcType="VARCHAR" />
+    <result column="book_iscloud" property="bookIscloud" jdbcType="INTEGER" />
+    <result column="book_url" property="bookUrl" jdbcType="VARCHAR" />
+    <result column="book_company" property="bookCompany" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, book_ISBN, book_name, book_author, book_publish_date, book_publish_house, book_price, 
+    book_photo, book_introduce, book_iscloud, book_url, book_company
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.nigel.readbox.entity.BookInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from book_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from book_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from book_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.nigel.readbox.entity.BookInfoExample" >
+    delete from book_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.nigel.readbox.entity.BookInfo" >
+    insert into book_info (id, book_ISBN, book_name, 
+      book_author, book_publish_date, book_publish_house, 
+      book_price, book_photo, book_introduce, 
+      book_iscloud, book_url, book_company
+      )
+    values (#{id,jdbcType=INTEGER}, #{bookIsbn,jdbcType=VARCHAR}, #{bookName,jdbcType=VARCHAR}, 
+      #{bookAuthor,jdbcType=VARCHAR}, #{bookPublishDate,jdbcType=TIMESTAMP}, #{bookPublishHouse,jdbcType=VARCHAR}, 
+      #{bookPrice,jdbcType=DECIMAL}, #{bookPhoto,jdbcType=VARCHAR}, #{bookIntroduce,jdbcType=VARCHAR}, 
+      #{bookIscloud,jdbcType=INTEGER}, #{bookUrl,jdbcType=VARCHAR}, #{bookCompany,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.nigel.readbox.entity.BookInfo" >
+    insert into book_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="bookIsbn != null" >
+        book_ISBN,
+      </if>
+      <if test="bookName != null" >
+        book_name,
+      </if>
+      <if test="bookAuthor != null" >
+        book_author,
+      </if>
+      <if test="bookPublishDate != null" >
+        book_publish_date,
+      </if>
+      <if test="bookPublishHouse != null" >
+        book_publish_house,
+      </if>
+      <if test="bookPrice != null" >
+        book_price,
+      </if>
+      <if test="bookPhoto != null" >
+        book_photo,
+      </if>
+      <if test="bookIntroduce != null" >
+        book_introduce,
+      </if>
+      <if test="bookIscloud != null" >
+        book_iscloud,
+      </if>
+      <if test="bookUrl != null" >
+        book_url,
+      </if>
+      <if test="bookCompany != null" >
+        book_company,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bookIsbn != null" >
+        #{bookIsbn,jdbcType=VARCHAR},
+      </if>
+      <if test="bookName != null" >
+        #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="bookAuthor != null" >
+        #{bookAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="bookPublishDate != null" >
+        #{bookPublishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bookPublishHouse != null" >
+        #{bookPublishHouse,jdbcType=VARCHAR},
+      </if>
+      <if test="bookPrice != null" >
+        #{bookPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="bookPhoto != null" >
+        #{bookPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="bookIntroduce != null" >
+        #{bookIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="bookIscloud != null" >
+        #{bookIscloud,jdbcType=INTEGER},
+      </if>
+      <if test="bookUrl != null" >
+        #{bookUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="bookCompany != null" >
+        #{bookCompany,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.nigel.readbox.entity.BookInfoExample" resultType="java.lang.Integer" >
+    select count(*) from book_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update book_info
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.bookIsbn != null" >
+        book_ISBN = #{record.bookIsbn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookName != null" >
+        book_name = #{record.bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookAuthor != null" >
+        book_author = #{record.bookAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookPublishDate != null" >
+        book_publish_date = #{record.bookPublishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.bookPublishHouse != null" >
+        book_publish_house = #{record.bookPublishHouse,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookPrice != null" >
+        book_price = #{record.bookPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.bookPhoto != null" >
+        book_photo = #{record.bookPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookIntroduce != null" >
+        book_introduce = #{record.bookIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookIscloud != null" >
+        book_iscloud = #{record.bookIscloud,jdbcType=INTEGER},
+      </if>
+      <if test="record.bookUrl != null" >
+        book_url = #{record.bookUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookCompany != null" >
+        book_company = #{record.bookCompany,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update book_info
+    set id = #{record.id,jdbcType=INTEGER},
+      book_ISBN = #{record.bookIsbn,jdbcType=VARCHAR},
+      book_name = #{record.bookName,jdbcType=VARCHAR},
+      book_author = #{record.bookAuthor,jdbcType=VARCHAR},
+      book_publish_date = #{record.bookPublishDate,jdbcType=TIMESTAMP},
+      book_publish_house = #{record.bookPublishHouse,jdbcType=VARCHAR},
+      book_price = #{record.bookPrice,jdbcType=DECIMAL},
+      book_photo = #{record.bookPhoto,jdbcType=VARCHAR},
+      book_introduce = #{record.bookIntroduce,jdbcType=VARCHAR},
+      book_iscloud = #{record.bookIscloud,jdbcType=INTEGER},
+      book_url = #{record.bookUrl,jdbcType=VARCHAR},
+      book_company = #{record.bookCompany,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nigel.readbox.entity.BookInfo" >
+    update book_info
+    <set >
+      <if test="bookIsbn != null" >
+        book_ISBN = #{bookIsbn,jdbcType=VARCHAR},
+      </if>
+      <if test="bookName != null" >
+        book_name = #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="bookAuthor != null" >
+        book_author = #{bookAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="bookPublishDate != null" >
+        book_publish_date = #{bookPublishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bookPublishHouse != null" >
+        book_publish_house = #{bookPublishHouse,jdbcType=VARCHAR},
+      </if>
+      <if test="bookPrice != null" >
+        book_price = #{bookPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="bookPhoto != null" >
+        book_photo = #{bookPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="bookIntroduce != null" >
+        book_introduce = #{bookIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="bookIscloud != null" >
+        book_iscloud = #{bookIscloud,jdbcType=INTEGER},
+      </if>
+      <if test="bookUrl != null" >
+        book_url = #{bookUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="bookCompany != null" >
+        book_company = #{bookCompany,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nigel.readbox.entity.BookInfo" >
+    update book_info
+    set book_ISBN = #{bookIsbn,jdbcType=VARCHAR},
+      book_name = #{bookName,jdbcType=VARCHAR},
+      book_author = #{bookAuthor,jdbcType=VARCHAR},
+      book_publish_date = #{bookPublishDate,jdbcType=TIMESTAMP},
+      book_publish_house = #{bookPublishHouse,jdbcType=VARCHAR},
+      book_price = #{bookPrice,jdbcType=DECIMAL},
+      book_photo = #{bookPhoto,jdbcType=VARCHAR},
+      book_introduce = #{bookIntroduce,jdbcType=VARCHAR},
+      book_iscloud = #{bookIscloud,jdbcType=INTEGER},
+      book_url = #{bookUrl,jdbcType=VARCHAR},
+      book_company = #{bookCompany,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

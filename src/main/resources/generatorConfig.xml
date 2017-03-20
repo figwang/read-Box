@@ -37,8 +37,8 @@
         </javaModelGenerator>
 
         <!-- targetProject:mapper映射xml文件生成的位置，重要！！ -->
-        <sqlMapGenerator targetPackage="mybatis.mapper"
-                         targetProject="src\main\resources">
+        <sqlMapGenerator targetPackage="com.nigel.readbox.dao.mapper"
+                         targetProject="src\main\java">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
@@ -52,6 +52,11 @@
         <!-- 指定数据库表，要生成哪些表，就写哪些表，要和数据库中对应，不能写错！ -->
         <table tableName="user_info"></table>
         <table tableName="book_info"></table>
+        <table tableName="admin_info"></table>
+        <table tableName="book_borrow"></table>
+        <table tableName="book_comment"></table>
+        <table tableName="book_resource"></table>
+        <table tableName="company_info"></table>
         <!-- 有些表的字段需要指定java类型
          <table schema="" tableName="">
             <columnOverride column="" javaType="" />

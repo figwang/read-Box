@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nigel.readbox.dao.BookResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.nigel.readbox.entity.BookResource" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="rs_code" property="rsCode" jdbcType="VARCHAR" />
+    <result column="rs_book" property="rsBook" jdbcType="VARCHAR" />
+    <result column="rs_amount" property="rsAmount" jdbcType="INTEGER" />
+    <result column="rs_company" property="rsCompany" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, rs_code, rs_book, rs_amount, rs_company
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.nigel.readbox.entity.BookResourceExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from book_resource
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from book_resource
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from book_resource
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.nigel.readbox.entity.BookResourceExample" >
+    delete from book_resource
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.nigel.readbox.entity.BookResource" >
+    insert into book_resource (id, rs_code, rs_book, 
+      rs_amount, rs_company)
+    values (#{id,jdbcType=INTEGER}, #{rsCode,jdbcType=VARCHAR}, #{rsBook,jdbcType=VARCHAR}, 
+      #{rsAmount,jdbcType=INTEGER}, #{rsCompany,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.nigel.readbox.entity.BookResource" >
+    insert into book_resource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="rsCode != null" >
+        rs_code,
+      </if>
+      <if test="rsBook != null" >
+        rs_book,
+      </if>
+      <if test="rsAmount != null" >
+        rs_amount,
+      </if>
+      <if test="rsCompany != null" >
+        rs_company,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="rsCode != null" >
+        #{rsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="rsBook != null" >
+        #{rsBook,jdbcType=VARCHAR},
+      </if>
+      <if test="rsAmount != null" >
+        #{rsAmount,jdbcType=INTEGER},
+      </if>
+      <if test="rsCompany != null" >
+        #{rsCompany,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.nigel.readbox.entity.BookResourceExample" resultType="java.lang.Integer" >
+    select count(*) from book_resource
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update book_resource
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.rsCode != null" >
+        rs_code = #{record.rsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rsBook != null" >
+        rs_book = #{record.rsBook,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rsAmount != null" >
+        rs_amount = #{record.rsAmount,jdbcType=INTEGER},
+      </if>
+      <if test="record.rsCompany != null" >
+        rs_company = #{record.rsCompany,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update book_resource
+    set id = #{record.id,jdbcType=INTEGER},
+      rs_code = #{record.rsCode,jdbcType=VARCHAR},
+      rs_book = #{record.rsBook,jdbcType=VARCHAR},
+      rs_amount = #{record.rsAmount,jdbcType=INTEGER},
+      rs_company = #{record.rsCompany,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nigel.readbox.entity.BookResource" >
+    update book_resource
+    <set >
+      <if test="rsCode != null" >
+        rs_code = #{rsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="rsBook != null" >
+        rs_book = #{rsBook,jdbcType=VARCHAR},
+      </if>
+      <if test="rsAmount != null" >
+        rs_amount = #{rsAmount,jdbcType=INTEGER},
+      </if>
+      <if test="rsCompany != null" >
+        rs_company = #{rsCompany,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nigel.readbox.entity.BookResource" >
+    update book_resource
+    set rs_code = #{rsCode,jdbcType=VARCHAR},
+      rs_book = #{rsBook,jdbcType=VARCHAR},
+      rs_amount = #{rsAmount,jdbcType=INTEGER},
+      rs_company = #{rsCompany,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
