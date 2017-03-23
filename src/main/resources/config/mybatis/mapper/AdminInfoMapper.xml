@@ -12,20 +12,6 @@
   <sql id="Base_Column_List" >
     id, admin_code, admin_name, admin_pwd, admin_phone, admin_company
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.nigel.readbox.entity.AdminInfoExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from admin_info
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -35,12 +21,6 @@
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from admin_info
     where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.nigel.readbox.entity.AdminInfoExample" >
-    delete from admin_info
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
   </delete>
   <insert id="insert" parameterType="com.nigel.readbox.entity.AdminInfo" >
     insert into admin_info (id, admin_code, admin_name, 
@@ -93,50 +73,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.nigel.readbox.entity.AdminInfoExample" resultType="java.lang.Integer" >
-    select count(*) from admin_info
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update admin_info
-    <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
-      <if test="record.adminCode != null" >
-        admin_code = #{record.adminCode,jdbcType=VARCHAR},
-      </if>
-      <if test="record.adminName != null" >
-        admin_name = #{record.adminName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.adminPwd != null" >
-        admin_pwd = #{record.adminPwd,jdbcType=VARCHAR},
-      </if>
-      <if test="record.adminPhone != null" >
-        admin_phone = #{record.adminPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="record.adminCompany != null" >
-        admin_company = #{record.adminCompany,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update admin_info
-    set id = #{record.id,jdbcType=INTEGER},
-      admin_code = #{record.adminCode,jdbcType=VARCHAR},
-      admin_name = #{record.adminName,jdbcType=VARCHAR},
-      admin_pwd = #{record.adminPwd,jdbcType=VARCHAR},
-      admin_phone = #{record.adminPhone,jdbcType=VARCHAR},
-      admin_company = #{record.adminCompany,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.nigel.readbox.entity.AdminInfo" >
     update admin_info
     <set >

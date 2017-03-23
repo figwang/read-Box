@@ -6,5 +6,6 @@
 
     <!--扫描service-->
     <context:component-scan base-package="com.nigel.readbox.service"/>
-
+    <!--扫描dao-->
+    <context:component-scan base-package="com.nigel.readbox.dao"/>
 </beans>

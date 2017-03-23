@@ -189,6 +189,13 @@
             <version>2.5</version>
         </dependency>
 
+        <!--jackson包 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${com.fasterxml.jackson.core.version}</version>
+        </dependency>
+
     </dependencies>
     <properties>
         <org.apache.logging.log4j.version>2.6.2</org.apache.logging.log4j.version>
@@ -200,6 +207,7 @@
         <javax.servlet.jsp>2.1</javax.servlet.jsp>
         <org.springframework.version>4.3.2.RELEASE</org.springframework.version>
         <org.aspectj.aspectjweaver>1.8.6</org.aspectj.aspectjweaver>
+        <com.fasterxml.jackson.core.version>2.7.4</com.fasterxml.jackson.core.version>
         <developer.organization><![CDATA[scengine]]></developer.organization>
     </properties>
 </project>

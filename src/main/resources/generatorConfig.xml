@@ -37,7 +37,7 @@
         </javaModelGenerator>
 
         <!-- targetProject:mapper映射xml文件生成的位置，重要！！ -->
-        <sqlMapGenerator targetPackage="com.nigel.readbox.dao.mapper"
+        <sqlMapGenerator targetPackage="config.mybatis.mapper"
                          targetProject="src\main\java">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>

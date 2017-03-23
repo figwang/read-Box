@@ -19,20 +19,7 @@
     id, book_ISBN, book_name, book_author, book_publish_date, book_publish_house, book_price, 
     book_photo, book_introduce, book_iscloud, book_url, book_company
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.nigel.readbox.entity.BookInfoExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from book_info
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -43,12 +30,7 @@
     delete from book_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.nigel.readbox.entity.BookInfoExample" >
-    delete from book_info
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
+
   <insert id="insert" parameterType="com.nigel.readbox.entity.BookInfo" >
     insert into book_info (id, book_ISBN, book_name, 
       book_author, book_publish_date, book_publish_house, 
@@ -140,74 +122,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.nigel.readbox.entity.BookInfoExample" resultType="java.lang.Integer" >
-    select count(*) from book_info
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update book_info
-    <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
-      <if test="record.bookIsbn != null" >
-        book_ISBN = #{record.bookIsbn,jdbcType=VARCHAR},
-      </if>
-      <if test="record.bookName != null" >
-        book_name = #{record.bookName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.bookAuthor != null" >
-        book_author = #{record.bookAuthor,jdbcType=VARCHAR},
-      </if>
-      <if test="record.bookPublishDate != null" >
-        book_publish_date = #{record.bookPublishDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.bookPublishHouse != null" >
-        book_publish_house = #{record.bookPublishHouse,jdbcType=VARCHAR},
-      </if>
-      <if test="record.bookPrice != null" >
-        book_price = #{record.bookPrice,jdbcType=DECIMAL},
-      </if>
-      <if test="record.bookPhoto != null" >
-        book_photo = #{record.bookPhoto,jdbcType=VARCHAR},
-      </if>
-      <if test="record.bookIntroduce != null" >
-        book_introduce = #{record.bookIntroduce,jdbcType=VARCHAR},
-      </if>
-      <if test="record.bookIscloud != null" >
-        book_iscloud = #{record.bookIscloud,jdbcType=INTEGER},
-      </if>
-      <if test="record.bookUrl != null" >
-        book_url = #{record.bookUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="record.bookCompany != null" >
-        book_company = #{record.bookCompany,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update book_info
-    set id = #{record.id,jdbcType=INTEGER},
-      book_ISBN = #{record.bookIsbn,jdbcType=VARCHAR},
-      book_name = #{record.bookName,jdbcType=VARCHAR},
-      book_author = #{record.bookAuthor,jdbcType=VARCHAR},
-      book_publish_date = #{record.bookPublishDate,jdbcType=TIMESTAMP},
-      book_publish_house = #{record.bookPublishHouse,jdbcType=VARCHAR},
-      book_price = #{record.bookPrice,jdbcType=DECIMAL},
-      book_photo = #{record.bookPhoto,jdbcType=VARCHAR},
-      book_introduce = #{record.bookIntroduce,jdbcType=VARCHAR},
-      book_iscloud = #{record.bookIscloud,jdbcType=INTEGER},
-      book_url = #{record.bookUrl,jdbcType=VARCHAR},
-      book_company = #{record.bookCompany,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.nigel.readbox.entity.BookInfo" >
     update book_info
     <set >

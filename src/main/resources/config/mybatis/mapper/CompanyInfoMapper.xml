@@ -11,20 +11,7 @@
   <sql id="Base_Column_List" >
     id, company_code, company_name, company_address, company_city
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.nigel.readbox.entity.CompanyInfoExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from company_info
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -35,12 +22,7 @@
     delete from company_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.nigel.readbox.entity.CompanyInfoExample" >
-    delete from company_info
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
+
   <insert id="insert" parameterType="com.nigel.readbox.entity.CompanyInfo" >
     insert into company_info (id, company_code, company_name, 
       company_address, company_city)
@@ -84,46 +66,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.nigel.readbox.entity.CompanyInfoExample" resultType="java.lang.Integer" >
-    select count(*) from company_info
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update company_info
-    <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
-      <if test="record.companyCode != null" >
-        company_code = #{record.companyCode,jdbcType=VARCHAR},
-      </if>
-      <if test="record.companyName != null" >
-        company_name = #{record.companyName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.companyAddress != null" >
-        company_address = #{record.companyAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="record.companyCity != null" >
-        company_city = #{record.companyCity,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update company_info
-    set id = #{record.id,jdbcType=INTEGER},
-      company_code = #{record.companyCode,jdbcType=VARCHAR},
-      company_name = #{record.companyName,jdbcType=VARCHAR},
-      company_address = #{record.companyAddress,jdbcType=VARCHAR},
-      company_city = #{record.companyCity,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.nigel.readbox.entity.CompanyInfo" >
     update company_info
     <set >

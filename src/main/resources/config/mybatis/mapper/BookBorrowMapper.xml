@@ -16,20 +16,7 @@
     id, bw_code, bw_book_code, bw_user_code, bw_lend_time, bw_back_time, bw_isexpired, 
     bw_fine_amount, bw_islend
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.nigel.readbox.entity.BookBorrowExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from book_borrow
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -40,12 +27,7 @@
     delete from book_borrow
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.nigel.readbox.entity.BookBorrowExample" >
-    delete from book_borrow
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
+
   <insert id="insert" parameterType="com.nigel.readbox.entity.BookBorrow" >
     insert into book_borrow (id, bw_code, bw_book_code, 
       bw_user_code, bw_lend_time, bw_back_time, 
@@ -117,62 +99,6 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.nigel.readbox.entity.BookBorrowExample" resultType="java.lang.Integer" >
-    select count(*) from book_borrow
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update book_borrow
-    <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
-      <if test="record.bwCode != null" >
-        bw_code = #{record.bwCode,jdbcType=VARCHAR},
-      </if>
-      <if test="record.bwBookCode != null" >
-        bw_book_code = #{record.bwBookCode,jdbcType=VARCHAR},
-      </if>
-      <if test="record.bwUserCode != null" >
-        bw_user_code = #{record.bwUserCode,jdbcType=VARCHAR},
-      </if>
-      <if test="record.bwLendTime != null" >
-        bw_lend_time = #{record.bwLendTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.bwBackTime != null" >
-        bw_back_time = #{record.bwBackTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.bwIsexpired != null" >
-        bw_isexpired = #{record.bwIsexpired,jdbcType=VARCHAR},
-      </if>
-      <if test="record.bwFineAmount != null" >
-        bw_fine_amount = #{record.bwFineAmount,jdbcType=DECIMAL},
-      </if>
-      <if test="record.bwIslend != null" >
-        bw_islend = #{record.bwIslend,jdbcType=INTEGER},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update book_borrow
-    set id = #{record.id,jdbcType=INTEGER},
-      bw_code = #{record.bwCode,jdbcType=VARCHAR},
-      bw_book_code = #{record.bwBookCode,jdbcType=VARCHAR},
-      bw_user_code = #{record.bwUserCode,jdbcType=VARCHAR},
-      bw_lend_time = #{record.bwLendTime,jdbcType=TIMESTAMP},
-      bw_back_time = #{record.bwBackTime,jdbcType=TIMESTAMP},
-      bw_isexpired = #{record.bwIsexpired,jdbcType=VARCHAR},
-      bw_fine_amount = #{record.bwFineAmount,jdbcType=DECIMAL},
-      bw_islend = #{record.bwIslend,jdbcType=INTEGER}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.nigel.readbox.entity.BookBorrow" >
     update book_borrow
     <set >

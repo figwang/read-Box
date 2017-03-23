@@ -13,21 +13,22 @@
         <property name="jdbcUrl" value="${jdbc.url}"/>
         <property name="user" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
-        <property name="maxPoolSize" value="50"/>
+        <property name="maxPoolSize" value="5"/>
         <property name="minPoolSize" value="2"/>
         <property name="maxIdleTime" value="60"/>
     </bean>
 
-    <!--sqlsessionFactory bean-->
-    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="configLocation" value="classpath:config/mybatis/SqlMapConfig.xml"/>
+    <!-- mybatis和spring完美整合，不需要mybatis的配置映射文件 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:config/mybatis/SqlMapConfig.xml"/>
+        <!-- 自动扫描mapping.xml文件 -->
+        <property name="mapperLocations" value="classpath:config/mybatis/mapper/*.xml"></property>
     </bean>
 
-    <!--自动扫描mapper接口，并注入sqlsession-->
+    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.elin4it.ssm.mapper"/>
-        <property name="sqlSessionFactoryBeanName" value="sqlSession"/>
+        <property name="basePackage" value="com.nigel.readbox.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
     </bean>
-
 </beans>

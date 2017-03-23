@@ -1,10 +1,9 @@
 package com.nigel.readbox.dao;
 
 import com.nigel.readbox.entity.BookComment;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
-
+@Repository
 public interface BookCommentMapper {
 
     int deleteByPrimaryKey(Integer id);

@@ -24,20 +24,7 @@
     user_major, user_company, user_openid, user_nickname, user_subscribe_time, user_province, 
     user_city, user_subscribe
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.nigel.readbox.entity.UserInfoExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from user_info
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -48,12 +35,7 @@
     delete from user_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.nigel.readbox.entity.UserInfoExample" >
-    delete from user_info
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
+
   <insert id="insert" parameterType="com.nigel.readbox.entity.UserInfo" >
     insert into user_info (id, user_code, user_name, 
       user_pwd, user_academy, user_sex, 
@@ -61,13 +43,27 @@
       user_company, user_openid, user_nickname, 
       user_subscribe_time, user_province, user_city, 
       user_subscribe)
-    values (#{id,jdbcType=INTEGER}, #{userCode,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
-      #{userPwd,jdbcType=VARCHAR}, #{userAcademy,jdbcType=VARCHAR}, #{userSex,jdbcType=INTEGER}, 
-      #{userPhone,jdbcType=VARCHAR}, #{userPhoto,jdbcType=VARCHAR}, #{userMajor,jdbcType=VARCHAR}, 
-      #{userCompany,jdbcType=VARCHAR}, #{userOpenid,jdbcType=VARCHAR}, #{userNickname,jdbcType=VARCHAR}, 
-      #{userSubscribeTime,jdbcType=TIMESTAMP}, #{userProvince,jdbcType=VARCHAR}, #{userCity,jdbcType=VARCHAR}, 
-      #{userSubscribe,jdbcType=INTEGER})
+    values (#{id}, #{userCode}, #{userName},
+      #{userPwd}, #{userAcademy}, #{userSex},
+      #{userPhone}, #{userPhoto}, #{userMajor},
+      #{userCompany}, #{userOpenid}, #{userNickname},
+      #{userSubscribeTime}, #{userProvince}, #{userCity},
+      #{userSubscribe})
   </insert>
+  <!--<insert id="insert" parameterType="com.nigel.readbox.entity.UserInfo" >
+    insert into user_info (id, user_code, user_name,
+      user_pwd, user_academy, user_sex,
+      user_phone, user_photo, user_major,
+      user_company, user_openid, user_nickname,
+      user_subscribe_time, user_province, user_city,
+      user_subscribe)
+    values (#{id,jdbcType=INTEGER}, #{userCode,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR},
+      #{userPwd,jdbcType=VARCHAR}, #{userAcademy,jdbcType=VARCHAR}, #{userSex,jdbcType=INTEGER},
+      #{userPhone,jdbcType=VARCHAR}, #{userPhoto,jdbcType=VARCHAR}, #{userMajor,jdbcType=VARCHAR},
+      #{userCompany,jdbcType=VARCHAR}, #{userOpenid,jdbcType=VARCHAR}, #{userNickname,jdbcType=VARCHAR},
+      #{userSubscribeTime,jdbcType=TIMESTAMP}, #{userProvince,jdbcType=VARCHAR}, #{userCity,jdbcType=VARCHAR},
+      #{userSubscribe,jdbcType=INTEGER})
+  </insert>-->
   <insert id="insertSelective" parameterType="com.nigel.readbox.entity.UserInfo" >
     insert into user_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -171,90 +167,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.nigel.readbox.entity.UserInfoExample" resultType="java.lang.Integer" >
-    select count(*) from user_info
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update user_info
-    <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
-      <if test="record.userCode != null" >
-        user_code = #{record.userCode,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userName != null" >
-        user_name = #{record.userName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userPwd != null" >
-        user_pwd = #{record.userPwd,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userAcademy != null" >
-        user_academy = #{record.userAcademy,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userSex != null" >
-        user_sex = #{record.userSex,jdbcType=INTEGER},
-      </if>
-      <if test="record.userPhone != null" >
-        user_phone = #{record.userPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userPhoto != null" >
-        user_photo = #{record.userPhoto,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userMajor != null" >
-        user_major = #{record.userMajor,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userCompany != null" >
-        user_company = #{record.userCompany,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userOpenid != null" >
-        user_openid = #{record.userOpenid,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userNickname != null" >
-        user_nickname = #{record.userNickname,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userSubscribeTime != null" >
-        user_subscribe_time = #{record.userSubscribeTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.userProvince != null" >
-        user_province = #{record.userProvince,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userCity != null" >
-        user_city = #{record.userCity,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userSubscribe != null" >
-        user_subscribe = #{record.userSubscribe,jdbcType=INTEGER},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update user_info
-    set id = #{record.id,jdbcType=INTEGER},
-      user_code = #{record.userCode,jdbcType=VARCHAR},
-      user_name = #{record.userName,jdbcType=VARCHAR},
-      user_pwd = #{record.userPwd,jdbcType=VARCHAR},
-      user_academy = #{record.userAcademy,jdbcType=VARCHAR},
-      user_sex = #{record.userSex,jdbcType=INTEGER},
-      user_phone = #{record.userPhone,jdbcType=VARCHAR},
-      user_photo = #{record.userPhoto,jdbcType=VARCHAR},
-      user_major = #{record.userMajor,jdbcType=VARCHAR},
-      user_company = #{record.userCompany,jdbcType=VARCHAR},
-      user_openid = #{record.userOpenid,jdbcType=VARCHAR},
-      user_nickname = #{record.userNickname,jdbcType=VARCHAR},
-      user_subscribe_time = #{record.userSubscribeTime,jdbcType=TIMESTAMP},
-      user_province = #{record.userProvince,jdbcType=VARCHAR},
-      user_city = #{record.userCity,jdbcType=VARCHAR},
-      user_subscribe = #{record.userSubscribe,jdbcType=INTEGER}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.nigel.readbox.entity.UserInfo" >
     update user_info
     <set >
