@@ -18,10 +18,30 @@
     from admin_info
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+
+  <select id="selectByAdminCode" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from admin_info
+    where admin_code = #{adminCode,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectListByLike" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from admin_info
+    where
+    admin_code like #{search} OR
+    admin_name like #{search} OR
+    admin_phone like #{search}
+    order by admin_code ASC
+  </select>
+
+  <delete id="deleteByAdminCode" parameterType="java.lang.String" >
     delete from admin_info
-    where id = #{id,jdbcType=INTEGER}
+    where admin_code = #{adminCode,jdbcType=VARCHAR}
   </delete>
+
   <insert id="insert" parameterType="com.nigel.readbox.entity.AdminInfo" >
     insert into admin_info (id, admin_code, admin_name, 
       admin_pwd, admin_phone, admin_company
@@ -93,7 +113,7 @@
         admin_company = #{adminCompany,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where admin_code = #{adminCode,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.nigel.readbox.entity.AdminInfo" >
     update admin_info
@@ -102,6 +122,6 @@
       admin_pwd = #{adminPwd,jdbcType=VARCHAR},
       admin_phone = #{adminPhone,jdbcType=VARCHAR},
       admin_company = #{adminCompany,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where admin_code = #{adminCode,jdbcType=VARCHAR}
   </update>
 </mapper>

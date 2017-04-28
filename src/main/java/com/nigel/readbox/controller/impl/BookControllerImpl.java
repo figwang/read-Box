@@ -1,5 +1,6 @@
 package com.nigel.readbox.controller.impl;
 
+import com.nigel.readbox.common.constant.Result;
 import com.nigel.readbox.controller.BookController;
 import com.nigel.readbox.entity.BookInfo;
 import com.nigel.readbox.service.BookService;
@@ -23,22 +24,46 @@ public class BookControllerImpl  implements BookController {
     BookService bookService;
 
     public String addBookInfo(@RequestBody BookInfo bookInfo) {
-        return null;
+        int result = bookService.addBookInfo(bookInfo);
+        if(result > 0)
+        {
+            return Result.SUCCESS;
+        }
+        else
+        {
+            return Result.FAIL;
+        }
     }
 
-    public String delBookInfo(@RequestBody String bookCode) {
-        return null;
+    public String delBookInfo(@RequestBody String bookIsbn) {
+        int result = bookService.delBookInfo(bookIsbn);
+        if(result > 0)
+        {
+            return Result.SUCCESS;
+        }
+        else
+        {
+            return Result.FAIL;
+        }
     }
 
     public List<BookInfo> searchListByBookInfo(@RequestBody String search) {
         return null;
     }
 
-    public BookInfo searchBookInfo(@RequestBody String bookCode) {
-        return null;
+    public BookInfo searchBookInfo(@RequestBody String bookIsbn) {
+        return bookService.searchBookInfo(bookIsbn);
     }
 
     public String editBookInfo(@RequestBody BookInfo bookInfo) {
-        return null;
+        int result = bookService.editBookInfo(bookInfo);
+        if(result > 0)
+        {
+            return Result.SUCCESS;
+        }
+        else
+        {
+            return Result.FAIL;
+        }
     }
 }

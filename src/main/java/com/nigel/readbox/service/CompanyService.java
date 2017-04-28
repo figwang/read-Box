@@ -13,14 +13,14 @@ import java.util.List;
  */
 public interface CompanyService {
 
-    public String addCompanyInfo(CompanyInfo companyInfo);
+    public int addCompanyInfo(CompanyInfo companyInfo);
 
-    public String delCompanyInfo(String companyCode);
+    public int delCompanyInfo(String companyCode);
 
     public List<CompanyInfo> searchListByCompanyInfo(String search);
 
     public CompanyInfo searchCompanyInfo(String companyCode);
 
-    public String editCompanyInfo(CompanyInfo companyInfo);
+    public int editCompanyInfo(CompanyInfo companyInfo);
 
 }

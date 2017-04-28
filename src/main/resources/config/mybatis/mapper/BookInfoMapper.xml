@@ -26,9 +26,38 @@
     from book_info
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="selectByBookIsbn" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from book_info
+    where book_ISBN = #{bookIsbn,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectListByLike" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from book_info
+    where
+    book_company = #{bookCompany,jdbcType=VARCHAR} AND
+    book_ISBN like #{search} OR
+    book_author like #{search} OR
+    book_publish_house like #{search} OR
+    book_publish_date like #{search} OR
+    book_iscloud like #{search} OR
+    book_price like #{search} OR
+    book_introduce like #{search}
+    order by book_ISBN ASC
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from book_info
     where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <delete id="deleteByBookIsbn" parameterType="java.lang.Integer" >
+    delete from book_info
+    where book_ISBN = #{bookIsbn,jdbcType=VARCHAR}
   </delete>
 
   <insert id="insert" parameterType="com.nigel.readbox.entity.BookInfo" >
@@ -123,7 +152,7 @@
     </trim>
   </insert>
 
-  <update id="updateByPrimaryKeySelective" parameterType="com.nigel.readbox.entity.BookInfo" >
+  <update id="updateByBookIsbnSelective" parameterType="com.nigel.readbox.entity.BookInfo" >
     update book_info
     <set >
       <if test="bookIsbn != null" >
@@ -160,9 +189,9 @@
         book_company = #{bookCompany,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where book_ISBN = #{bookIsbn,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.nigel.readbox.entity.BookInfo" >
+  <update id="updateByBookIsbn" parameterType="com.nigel.readbox.entity.BookInfo" >
     update book_info
     set book_ISBN = #{bookIsbn,jdbcType=VARCHAR},
       book_name = #{bookName,jdbcType=VARCHAR},
@@ -175,6 +204,6 @@
       book_iscloud = #{bookIscloud,jdbcType=INTEGER},
       book_url = #{bookUrl,jdbcType=VARCHAR},
       book_company = #{bookCompany,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+      where book_ISBN = #{bookIsbn,jdbcType=VARCHAR}
   </update>
 </mapper>

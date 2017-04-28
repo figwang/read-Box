@@ -21,23 +21,23 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     AdminInfoMapper adminInfoMapper;
 
-    public String addAdminInfo(AdminInfo adminInfo) {
-        return null;
+    public int addAdminInfo(AdminInfo adminInfo) {
+        return adminInfoMapper.insertSelective(adminInfo);
     }
 
-    public String delAdminInfo(String adminCode) {
-        return null;
+    public int delAdminInfo(String adminCode) {
+        return adminInfoMapper.deleteByAdminCode(adminCode);
     }
 
     public List<AdminInfo> searchListByAdminInfo(String search) {
-        return null;
+        return adminInfoMapper.selectListByLike(search);
     }
 
     public AdminInfo searchAdminInfo(String adminCode) {
-        return null;
+        return adminInfoMapper.selectByAdminCode(adminCode);
     }
 
-    public String editAdminInfo(AdminInfo adminInfo) {
-        return null;
+    public int editAdminInfo(AdminInfo adminInfo) {
+        return adminInfoMapper.updateByPrimaryKeySelective(adminInfo);
     }
 }

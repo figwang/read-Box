@@ -1,8 +1,8 @@
 package com.nigel.readbox.controller.impl;
 
+import com.nigel.readbox.common.constant.Result;
 import com.nigel.readbox.controller.UserController;
 import com.nigel.readbox.entity.UserInfo;
-import com.nigel.readbox.entity.vo.BaseUserInfoVO;
 import com.nigel.readbox.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,12 +24,28 @@ public class UserCtrollerImpl implements UserController{
     @Autowired
     UserService userService;
 
-    public String addUserInfo(@RequestBody BaseUserInfoVO userInfo) {
-        return null;
+    public String addUserInfo(@RequestBody UserInfo userInfo) {
+        int result = userService.addUserInfo(userInfo);
+        if(result > 0)
+        {
+            return Result.SUCCESS;
+        }
+        else
+        {
+            return Result.FAIL;
+        }
     }
 
     public String delUserInfo(@RequestParam String userCode) {
-        return null;
+        int result = userService.delUserInfo(userCode);
+        if(result > 0)
+        {
+            return Result.SUCCESS;
+        }
+        else
+        {
+            return Result.FAIL;
+        }
     }
 
     public List<UserInfo> searchListByUserInfo(@RequestParam String search) {
@@ -37,10 +53,18 @@ public class UserCtrollerImpl implements UserController{
     }
 
     public UserInfo searchUserInfo(@RequestParam String userCode) {
-        return null;
+        return userService.searchUserInfo(userCode);
     }
 
-    public String editUserInfo(@RequestBody BaseUserInfoVO userInfo) {
-        return null;
+    public String editUserInfo(@RequestBody UserInfo userInfo) {
+        int result = userService.editUserInfo(userInfo);
+        if(result > 0)
+        {
+            return Result.SUCCESS;
+        }
+        else
+        {
+            return Result.FAIL;
+        }
     }
 }

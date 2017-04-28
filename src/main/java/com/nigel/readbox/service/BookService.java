@@ -13,13 +13,13 @@ import java.util.List;
  */
 public interface BookService {
 
-    public String addBookInfo(BookInfo bookInfo);
+    public int addBookInfo(BookInfo bookInfo);
 
-    public String delBookInfo(String bookCode);
+    public int delBookInfo(String bookIsbn);
 
-    public List<BookInfo> searchListByBookInfo(String search);
+    public List<BookInfo> searchListByBookInfo(String search , String bookCompany);
 
-    public BookInfo searchBookInfo(String bookCode);
+    public BookInfo searchBookInfo(String bookIsbn);
 
-    public String editBookInfo(BookInfo bookInfo);
+    public int editBookInfo(BookInfo bookInfo);
 }

@@ -21,23 +21,23 @@ public class BookServiceImpl implements BookService {
     @Autowired
     BookInfoMapper bookInfoMapper;
 
-    public String addBookInfo(BookInfo bookInfo) {
-        return null;
+    public int addBookInfo(BookInfo bookInfo) {
+        return bookInfoMapper.insertSelective(bookInfo);
     }
 
-    public String delBookInfo(String bookCode) {
-        return null;
+    public int delBookInfo(String bookIsbn) {
+        return bookInfoMapper.deleteBybookIsbn(bookIsbn);
     }
 
-    public List<BookInfo> searchListByBookInfo(String search) {
-        return null;
+    public List<BookInfo> searchListByBookInfo(String search , String bookCompany) {
+        return bookInfoMapper.selectListByLike(search , bookCompany);
     }
 
-    public BookInfo searchBookInfo(String bookCode) {
-        return null;
+    public BookInfo searchBookInfo(String bookIsbn) {
+        return bookInfoMapper.selectByBookIsbn(bookIsbn);
     }
 
-    public String editBookInfo(BookInfo bookInfo) {
-        return null;
+    public int editBookInfo(BookInfo bookInfo) {
+        return bookInfoMapper.updateByBookIsbnSelective(bookInfo);
     }
 }

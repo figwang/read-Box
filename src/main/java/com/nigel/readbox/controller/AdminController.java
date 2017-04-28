@@ -20,7 +20,7 @@ public interface AdminController {
      * @param adminInfo 管理员信息
      * @return 成功返回success，失败返回fail
      */
-    @RequestMapping(value = "/searchListByUserInfo.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/addAdminInfo.do", method = RequestMethod.POST)
     public @ResponseBody
     String addAdminInfo(@RequestBody AdminInfo adminInfo);
 

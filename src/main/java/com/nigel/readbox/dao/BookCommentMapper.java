@@ -3,10 +3,14 @@ package com.nigel.readbox.dao;
 import com.nigel.readbox.entity.BookComment;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface BookCommentMapper {
 
     int deleteByPrimaryKey(Integer id);
+
+    int deleteByCommentCode(String commentCode);
 
     int insert(BookComment record);
 
@@ -14,7 +18,11 @@ public interface BookCommentMapper {
 
     BookComment selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(BookComment record);
+    BookComment selectByCommentCode(String commentCode);
 
-    int updateByPrimaryKey(BookComment record);
+    List<BookComment>  selectByBookIsbn(String commentIsbn);
+
+    int updateByBookIsbnSelective(BookComment record);
+
+    int updateByBookIsbn(BookComment record);
 }

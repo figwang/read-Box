@@ -21,23 +21,23 @@ public class CompanyServiceImpl implements CompanyService {
     @Autowired
     CompanyInfoMapper companyInfoMapper;
 
-    public String addCompanyInfo(CompanyInfo companyInfo) {
-        return null;
+    public int addCompanyInfo(CompanyInfo companyInfo) {
+        return companyInfoMapper.insert(companyInfo);
     }
 
-    public String delCompanyInfo(String companyCode) {
-        return null;
+    public int delCompanyInfo(String companyCode) {
+        return companyInfoMapper.deleteByCompanyCode(companyCode);
     }
 
     public List<CompanyInfo> searchListByCompanyInfo(String search) {
-        return null;
+        return companyInfoMapper.selecListByLike(search);
     }
 
     public CompanyInfo searchCompanyInfo(String companyCode) {
-        return null;
+        return companyInfoMapper.selectByCompanyCode(companyCode);
     }
 
-    public String editCompanyInfo(CompanyInfo companyInfo) {
-        return null;
+    public int editCompanyInfo(CompanyInfo companyInfo) {
+        return companyInfoMapper.updateByPrimaryKeySelective(companyInfo);
     }
 }

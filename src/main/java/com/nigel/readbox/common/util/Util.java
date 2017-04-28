@@ -8,4 +8,9 @@ package com.nigel.readbox.common.util;
  * @Date 2017/3/24 0024  0:41
  */
 public class Util {
+
+    /**模糊查询字符串转换*/
+    public static String convert(String str){
+        return "%"+str+"%";
+    }
 }

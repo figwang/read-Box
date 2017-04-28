@@ -13,9 +13,35 @@
     id, comment_code, comment_contents, comment_time, comment_user, comment_ISBN
   </sql>
 
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from book_comment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByCommentCode" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from book_comment
+    where comment_code = #{commentCode,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByBookIsbn" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from book_comment
+    where comment_ISBN = #{commentIsbn,jdbcType=VARCHAR}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from book_comment
     where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <delete id="deleteByCommentCode" parameterType="java.lang.String" >
+    delete from book_comment
+    where comment_code = #{commentCode,jdbcType=String}
   </delete>
 
   <insert id="insert" parameterType="com.nigel.readbox.entity.BookComment" >
@@ -70,7 +96,7 @@
     </trim>
   </insert>
 
-  <update id="updateByPrimaryKeySelective" parameterType="com.nigel.readbox.entity.BookComment" >
+  <update id="updateByCommentCodeSelective" parameterType="com.nigel.readbox.entity.BookComment" >
     update book_comment
     <set >
       <if test="commentCode != null" >
@@ -89,15 +115,15 @@
         comment_ISBN = #{commentIsbn,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where comment_code = #{commentCode,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.nigel.readbox.entity.BookComment" >
+  <update id="updateByCommentCode" parameterType="com.nigel.readbox.entity.BookComment" >
     update book_comment
     set comment_code = #{commentCode,jdbcType=VARCHAR},
       comment_contents = #{commentContents,jdbcType=VARCHAR},
       comment_time = #{commentTime,jdbcType=TIMESTAMP},
       comment_user = #{commentUser,jdbcType=VARCHAR},
       comment_ISBN = #{commentIsbn,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where comment_code = #{commentCode,jdbcType=VARCHAR}
   </update>
 </mapper>

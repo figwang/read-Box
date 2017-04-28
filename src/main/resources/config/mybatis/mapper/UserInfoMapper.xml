@@ -31,9 +31,58 @@
     from user_info
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="selectByUserCode" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from user_info
+    where user_code = #{userCode,jdbcType=AVRCHAR}
+  </select>
+
+  <select id="selectByUserOpenid" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from user_info
+    where user_openid = #{userOpenid,jdbcType=AVRCHAR}
+  </select>
+
+  <select id="selectListByLike" resultMap="BaseResultMap" parameterType="java.lang.String" >
+      select
+      <include refid="Base_Column_List" />
+      from user_info
+      where
+      user_company = #{userCompany,jdbcType=VARCHAR} AND
+      user_code like #{search} OR
+      user_name like #{search} OR
+      user_sex like #{search} OR
+      user_academy like #{search} OR
+      user_phone like #{search} OR
+      user_major like #{search}
+      order by user_code ASC
+  </select>
+
+  <select id="selectWeChatListByLike" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from user_info
+    where
+    user_company = #{userCompany,jdbcType=VARCHAR} AND
+    user_code like #{search} OR
+    user_name like #{search} OR
+    user_sex like #{search} OR
+    user_openid like #{search} OR
+    user_nickname like  #{search} OR
+    order by user_code ASC
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user_info
     where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <delete id="deleteByUserCode" parameterType="java.lang.Integer" >
+    delete from user_info
+    where user_code = #{userCode,jdbcType=VARCHAR}
   </delete>
 
   <insert id="insert" parameterType="com.nigel.readbox.entity.UserInfo" >
@@ -217,7 +266,7 @@
         user_subscribe = #{userSubscribe,jdbcType=INTEGER},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where user_code = #{userCode,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.nigel.readbox.entity.UserInfo" >
     update user_info
@@ -236,6 +285,6 @@
       user_province = #{userProvince,jdbcType=VARCHAR},
       user_city = #{userCity,jdbcType=VARCHAR},
       user_subscribe = #{userSubscribe,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+    where user_code = #{userCode,jdbcType=VARCHAR}
   </update>
 </mapper>

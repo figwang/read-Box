@@ -21,12 +21,12 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     BookCommentMapper bookCommentMapper;
 
-    public String addComment(BookComment comment) {
-        return null;
+    public int addComment(BookComment comment) {
+        return bookCommentMapper.insert(comment);
     }
 
-    public String delComment(String commentCode) {
-        return null;
+    public int delComment(String commentCode) {
+        return bookCommentMapper.deleteByCommentCode(commentCode);
     }
 
     public List<BookComment> searchListByComment(String search) {
@@ -34,10 +34,10 @@ public class CommentServiceImpl implements CommentService {
     }
 
     public BookComment searchComment(String commentCode) {
-        return null;
+        return bookCommentMapper.selectByCommentCode(commentCode);
     }
 
-    public String editComment(BookComment comment) {
-        return null;
+    public int editComment(BookComment comment) {
+        return bookCommentMapper.updateByBookIsbn(comment);
     }
 }

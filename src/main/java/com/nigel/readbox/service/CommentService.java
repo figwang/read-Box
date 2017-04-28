@@ -13,13 +13,13 @@ import java.util.List;
  */
 public interface CommentService {
 
-    public String addComment(BookComment comment);
+    public int addComment(BookComment comment);
 
-    public String delComment(String commentCode);
+    public int delComment(String commentCode);
 
     public List<BookComment> searchListByComment(String search);
 
     public BookComment searchComment(String commentCode);
 
-    public String editComment(BookComment comment);
+    public int editComment(BookComment comment);
 }

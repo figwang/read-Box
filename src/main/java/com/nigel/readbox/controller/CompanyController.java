@@ -1,10 +1,7 @@
 package com.nigel.readbox.controller;
 
 import com.nigel.readbox.entity.CompanyInfo;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,7 +30,7 @@ public interface CompanyController {
      */
     @RequestMapping(value = "/delCompanyInfo.do", method = RequestMethod.GET)
     public @ResponseBody
-    String delCompanyInfo(@RequestBody String companyCode);
+    String delCompanyInfo(@RequestParam String companyCode);
 
     /**
      * 模糊查询单位(学校)信息
@@ -42,7 +39,7 @@ public interface CompanyController {
      */
     @RequestMapping(value = "/searchListByCompanyInfo.do", method = RequestMethod.GET)
     public @ResponseBody
-    List<CompanyInfo> searchListByCompanyInfo(@RequestBody String search);
+    List<CompanyInfo> searchListByCompanyInfo(@RequestParam String search);
 
     /**
      * 查询单位(学校)详细信息
@@ -51,7 +48,7 @@ public interface CompanyController {
      */
     @RequestMapping(value = "/searchCompanyInfo.do", method = RequestMethod.GET)
     public @ResponseBody
-    CompanyInfo searchCompanyInfo(@RequestBody String companyCode);
+    CompanyInfo searchCompanyInfo(@RequestParam String companyCode);
 
     /**
      * 修改单位(学校)信息

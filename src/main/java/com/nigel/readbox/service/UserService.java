@@ -1,7 +1,6 @@
 package com.nigel.readbox.service;
 
 import com.nigel.readbox.entity.UserInfo;
-import com.nigel.readbox.entity.vo.BaseUserInfoVO;
 
 import java.util.List;
 
@@ -14,14 +13,14 @@ import java.util.List;
  */
 public interface UserService {
 
-    public String addUserInfo(BaseUserInfoVO userInfo);
+    public int addUserInfo(UserInfo userInfo);
 
-    public String delUserInfo(String userCode);
+    public int  delUserInfo(String userCode);
 
-    public List<UserInfo> searchListByUserInfo(String search);
+    public List<UserInfo> searchListByUserInfo(String search, String companyCode);
 
     public UserInfo searchUserInfo(String userCode);
 
-    public String editUserInfo(BaseUserInfoVO userInfo);
+    public int editUserInfo(UserInfo userInfo);
 
 }

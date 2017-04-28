@@ -1,7 +1,6 @@
 package com.nigel.readbox.controller;
 
 import com.nigel.readbox.entity.UserInfo;
-import com.nigel.readbox.entity.vo.BaseUserInfoVO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,7 +23,7 @@ public interface UserController {
      */
     @RequestMapping(value = "/addUserInfo.do", method = RequestMethod.POST)
     public @ResponseBody
-    String addUserInfo(@RequestBody BaseUserInfoVO userInfo);
+    String addUserInfo(@RequestBody UserInfo userInfo);
 
     /**
      * 删除用户信息
@@ -52,7 +51,7 @@ public interface UserController {
      * @param userCode 用户唯一身份编码
      * @return 用户详细信息，失败返回异常fail
      */
-    @RequestMapping(value = "/searchListByUserInfo.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/searchUserInfo.do", method = RequestMethod.GET)
     public @ResponseBody
     UserInfo searchUserInfo(@RequestParam String userCode);
 
@@ -62,7 +61,7 @@ public interface UserController {
      * @param userInfo 用户基本信息
      * @return 成功返回success，失败返回fail
      */
-    @RequestMapping(value = "/searchListByUserInfo.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/editUserInfo.do", method = RequestMethod.POST)
     public @ResponseBody
-    String editUserInfo(@RequestBody BaseUserInfoVO userInfo);
+    String editUserInfo(@RequestBody UserInfo userInfo);
 }

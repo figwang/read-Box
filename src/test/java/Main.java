@@ -1,5 +1,5 @@
-import com.nigel.readbox.entity.UserInfo;
-import com.nigel.readbox.service.UserService;
+import com.nigel.readbox.common.util.Util;
+import com.nigel.readbox.service.AdminService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
@@ -12,9 +12,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Main {
     public static void main(String[] args) {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:config/spring/applicationContext-*.xml");
-        UserService userService;
-        userService = (UserService) ctx.getBean("userServiceImpl");
-        UserInfo a = userService.searchUserInfo("99");
-        System.out.println(a);
+        AdminService adminService;
+        adminService = (AdminService) ctx.getBean("adminServiceImpl");
+
+        System.out.println(adminService.searchListByAdminInfo(Util.convert("AM")));
     }
 }

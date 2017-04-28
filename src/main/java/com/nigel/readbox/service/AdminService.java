@@ -13,13 +13,13 @@ import java.util.List;
  */
 public interface AdminService {
 
-    public String addAdminInfo(AdminInfo adminInfo);
+    public int addAdminInfo(AdminInfo adminInfo);
 
-    public String delAdminInfo(String adminCode);
+    public int delAdminInfo(String adminCode);
 
     public List<AdminInfo> searchListByAdminInfo(String search);
 
     public AdminInfo searchAdminInfo(String adminCode);
 
-    public String editAdminInfo(AdminInfo adminInfo);
+    public int editAdminInfo(AdminInfo adminInfo);
 }

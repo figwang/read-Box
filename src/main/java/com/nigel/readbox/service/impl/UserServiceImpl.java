@@ -2,7 +2,6 @@ package com.nigel.readbox.service.impl;
 
 import com.nigel.readbox.dao.UserInfoMapper;
 import com.nigel.readbox.entity.UserInfo;
-import com.nigel.readbox.entity.vo.BaseUserInfoVO;
 import com.nigel.readbox.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,23 +21,23 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserInfoMapper userInfoMapper;
 
-    public String addUserInfo(BaseUserInfoVO userInfo) {
-        return null;
+    public int addUserInfo(UserInfo userInfo) {
+        return userInfoMapper.insertSelective(userInfo);
     }
 
-    public String delUserInfo(String userCode) {
-        return null;
+    public int delUserInfo(String userCode) {
+        return userInfoMapper.deleteByUserCode(userCode);
     }
 
-    public List<UserInfo> searchListByUserInfo(String search) {
-        return null;
+    public List<UserInfo> searchListByUserInfo(String search , String companyCode) {
+        return userInfoMapper.selectListByLike(search , companyCode);
     }
 
     public UserInfo searchUserInfo(String userCode) {
-        return userInfoMapper.selectByPrimaryKey(22);
+        return userInfoMapper.selectByUserCode(userCode);
     }
 
-    public String editUserInfo(BaseUserInfoVO userInfo) {
-        return null;
+    public int editUserInfo(UserInfo userInfo) {
+        return userInfoMapper.updateByPrimaryKeySelective(userInfo);
     }
 }

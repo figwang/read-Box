@@ -18,9 +18,34 @@
     from company_info
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="selectByCompanyCode" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from company_info
+    where company_code = #{companyCode,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selecListByLike" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from company_info
+    where
+    company_code like #{search} OR
+    company_name like #{search} OR
+    company_address like #{search} OR
+    company_city like #{search}
+    order by company_code ASC
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from company_info
     where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <delete id="deleteByCompanyCode" parameterType="java.lang.String" >
+    delete from company_info
+    where company_code = #{companyCode,jdbcType=VARCHAR}
   </delete>
 
   <insert id="insert" parameterType="com.nigel.readbox.entity.CompanyInfo" >
@@ -83,7 +108,7 @@
         company_city = #{companyCity,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where company_code = #{companyCode,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.nigel.readbox.entity.CompanyInfo" >
     update company_info
@@ -91,6 +116,6 @@
       company_name = #{companyName,jdbcType=VARCHAR},
       company_address = #{companyAddress,jdbcType=VARCHAR},
       company_city = #{companyCity,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where company_code = #{companyCode,jdbcType=VARCHAR}
   </update>
 </mapper>
