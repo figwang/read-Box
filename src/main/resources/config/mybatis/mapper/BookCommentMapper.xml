@@ -41,7 +41,7 @@
 
   <delete id="deleteByCommentCode" parameterType="java.lang.String" >
     delete from book_comment
-    where comment_code = #{commentCode,jdbcType=String}
+    where comment_code = #{commentCode,jdbcType=VARCHAR}
   </delete>
 
   <insert id="insert" parameterType="com.nigel.readbox.entity.BookComment" >

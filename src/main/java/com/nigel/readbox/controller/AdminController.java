@@ -27,12 +27,12 @@ public interface AdminController {
     /**
      * 删除管理员信息
      *
-     * @param adminCode 管理员唯一身份编码
+     * @param adminCodes 管理员唯一身份编码列表
      * @return 成功返回success，失败返回fail
      */
     @RequestMapping(value = "/delAdminInfo.do", method = RequestMethod.GET)
     public @ResponseBody
-    String delAdminInfo(@RequestParam String adminCode);
+    String delAdminInfo(@RequestParam List<String> adminCodes);
 
     /**
      * 模糊查询管理员信息
@@ -42,7 +42,7 @@ public interface AdminController {
      */
     @RequestMapping(value = "/searchListByAdminInfo.do", method = RequestMethod.GET)
     public @ResponseBody
-    List<AdminInfo> searchListByAdminInfo(@RequestParam String search);
+    List<AdminInfo> searchListByAdminInfo();
 
     /**
      * 查询管理员详细信息

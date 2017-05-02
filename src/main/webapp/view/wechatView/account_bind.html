@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+<title>绑定账号</title>
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="pragma" content="no-cache">
+<link href="./css/bound.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+</head>
+<body class="register">
+
+
+<div class="row toplogo">		
+<img src="image/logo.png" class="img-responsive center-block site-logo" style="max-width: 140px;">	<img src="image/no_pic.jpg" class="img-responsive center-block user-logo" width="32%">
+<h2 class="text-center"> </h2>	</div>
+<div class="container-fluid" id="content-container">
+<form id="register_form" action="http://wechat.v2.traceint.com/index.php/register/submit.html">
+<input type="hidden" name="user[user_id]" value="0">
+<input type="hidden" name="url" value="/index.php/reserve/index.html?n=5905d060d699f">
+<div class="row">
+<div class="back2">
+
+<div class="input-group downlist">
+<div class="input-group-btn">
+<button type="button" class="btn btn-default dropdown-toggle form-control">
+<!--<span><font color="#5c84bd"><b>图书馆</b></font></span>-->
+	<span>图书馆</span>
+</button>
+</div><!-- /btn-group -->
+<div class="input-group-btn" id="sch_text" style="width: 100%; padding-left: 5px;">
+<button type="button" style="text-align: left;border-radius:0;border-left: 1px solid #5C84BD;" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	<span id="companyId">南京财经大学</span>
+</button>
+<ul class="dropdown-menu">
+<li><a href="javascript:;">荆楚理工学院</a></li>
+<li><a href="javascript:;">中南民族大学</a></li>
+<li><a href="javascript:;">中南财经大学</a></li>
+</ul>
+</div>
+
+</div><!-- /input-group -->
+<!--<div class="form-group" style="display: none;">-->
+<div class="form-group">
+<input type="text" name="user[stud_no]" class="form-control" id="stud_no" placeholder="学生证上的学号">
+</div>
+<div class="form-group">
+<input type="password" name="user[user_passwd]" class="form-control" id="user-passwd" placeholder="请设置密码,长度6-12位" >
+</div>
+
+<div class="form-group onebtn">
+<button type="button" class="btn btn-default " id="register-submit">绑定微信号</button>
+</div>
+</div>
+
+</div></form>
+
+	  <script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+ 
+
+
+
+
+</div></body></html>

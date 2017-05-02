@@ -1,0 +1,104 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{margin:0;padding:0;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;-webkit-appearance:none;-webkit-tap-highlight-color:transparent;}
+body{font:14px/1.5 微软雅黑;background:#fff;color:#333;}
+ul{list-style-type:none;}
+input,select,textarea{vertical-align:middle; font:14px 微软雅黑; color:#333;}
+a:link,a:hover,a:active,a:visited{text-decoration:none;color:#333;}
+table{border-spacing:0px; border-collapse:collapse;width:100%; border:0px;margin:0;padding:0;}
+img{border:0px;}
+em{font-style:normal;}
+.clearfix{overflow:hidden;zoom:1;}
+.clear{clear:both; height:0px; font-size:0px; line-height:0px; overflow:hidden;}
+.fl{float:left;}
+.fr{float:right;}
+::-webkit-input-placeholder{color:#b2b2b2;}
+.head{position:fixed;top:0;left:0;box-shadow: 0px 1px 1px #7d858a;}
+.head,.resoult .foot{width:100%;height:43px;line-height:43px;background:#f0f3f7;}
+.head h1{font-size:18px;font-weight:normal;text-align:center;}
+.head h1 span{margin-left:-20px;}
+.head .back{margin:13px 0 0 10px;height:17px;line-height:17px;}
+.head .back img{float:left;margin-right:5px;}
+.header,.footer{height:43px;}
+/* .foot{text-align:center;position:fixed;bottom:0;left:0;box-shadow: 0px -1px 1px #7d858a;} */
+/*2014-04-02begin*/
+.foot{text-align:center;position:fixed;bottom:0;left:0;border-top:1px solid #ccc;}
+/*2014-04-02end*/
+.foot .back a{display:block;}
+.foot .back{height:35px;width:50px;border-right:1px  solid #b3b3b3;margin-top:3px;}
+.list{padding:0 10px;}
+.list li{border-bottom:1px solid #e0e0e0;}
+.list li a{display:block;padding:10px 0 5px;}
+.article{padding:10px;}
+.num{height:20px;line-height:20px;background:#a2acb2;padding-left:10px;}
+.num h1{font-size:12px;font-weight:normal;color:#fff;}
+
+.resoult .content{overflow-y:auto;}
+.resoult .list li .title{margin-bottom:10px;}
+.resoult .list li p{color:#666;font-size:12px;}
+.resoult .foot footer{display:-webkit-box;}
+.resoult .foot footer a,.resoult .foot footer span{-webkit-box-flex:1;display:block;text-align:center;font-weight:bold;}
+.resoult .foot footer .last{color:#0e6fe7;}
+.resoult .foot .order{display:block;width:100%;height:100%;color:#0e6fe7;}
+.resoult .article .tit{border-bottom:1px solid #d1d1d1;padding:10px 0;}
+.resoult .article .tit h1{font-size:16px;}
+.resoult .article .tit p{font-size:12px;line-height:25px;}
+.resoult .article .catalog{margin-top:10px;}
+.resoult .article .catalog p{line-height:20px;font-size:12px;}
+.resoult .article .tableLib{margin-top:10px;}
+.resoult .article .tableLib .titBox{height:45px;line-height:45px;border:1px solid #b3b3b3;background:#fff;}
+.resoult .article .tableLib .titBox p em{color:#666;}
+/*2014-04-25begin*/
+.resoult .article .tableLib .titBox a{padding:0 10px;height:45px;display:-webkit-box;-webkit-box-align:center;}
+.resoult .article .tableLib .titBox a span{display:block;width:0px;height:0px;font-size:0px;line-height:0px;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid #8c8c8c;margin-left:10px;}
+.resoult .article .tableLib .biao a span{width:0px;height:0px;font-size:0px;line-height:0px;border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid #8c8c8c; border-bottom:none;}
+/*2014-04-25begin*/
+.resoult .article .tableLib table th,.resoult .article .tableLib td{height:45px;line-height:45px;border:1px solid #b3b3b3;}
+.resoult .article .tableLib table th{text-align:right;padding-right:10px;}
+.resoult .article .tableLib td{padding-left:10px;}
+.resoult .article .tableLib td .lend{width:50px; height:25px; line-height:25px; text-align:center; border:1px solid #0e6fe7; margin:12px 8px 0 0; color:#0e6fe7;}/*2014.03.04*/
+.resoult .article .tableLib td .btn{display:block;width:50%;height:35px;line-height:35px;background:#0e6fe7;color:#fff;text-align:center;border-radius:2px;}
+.resoult .article .tableLib .tableCon{display:none;}
+
+
+.notice .list li .title{width:90%;height:29px;line-height:15px;}
+.notice .list li a:visited{color:#999;}
+.notice .list li em{color:#666;font-size:12px;}
+.notice .article .tit{padding:5px 0 5px 20px;}
+.notice .article .tit h1{font-size:16px;}
+.notice .article .catalog{margin-top:10px;}
+.notice .article .catalog p{text-indent:2em;}
+
+.bookSear .head h1 span{margin-left:-42px;}
+.bookSear .search{padding:20px;background:#e6e9ed;}
+.bookSear .search .txt{border:1px solid #bbbdbf;border-radius:4px;background:#fff;}
+.bookSear .search .txt select{padding-left:2px;border: none;background:none;}
+.bookSear .search .txt .btn{border:none;background:none;width:30px;height:34px;background:url(../images/iphone/search.svg) no-repeat center center;font-size:0;cursor:pointer;}
+.bookSear .search .txt .inputTxt{border:none;background:none;width:70%; height:34px;font:12px/20px;padding-left:10px;font-size:14px;color:#999;margin:0;padding:5;}
+/**begin-20140310 条件检索**/
+.bookSear .search .choice{margin-top:8px;border:1px solid #0e6fe7; }
+.bookSear .search .choice ul{display:-webkit-box; width:100%;}
+.bookSear .search .choice li{width:25%;border-right:1px solid #0e6fe7;-webkit-box-flex:1;}
+.bookSear .search .choice li a{display:block;height:27px;line-height:27px;text-align:center;color:#0e6fe7;}
+.bookSear .search .choice li a.cur{background:#0e6fe7;color:#fff;}
+.bookSear .search .choice li.last{border:none;}
+/**end-20140310 条件检索**/
+/*2014-05-16  导航begin*/
+.bookSear .tabBox{box-shadow: 0px -1px 1px #7d858a;}
+.bookSear .tabBox .tit{display: -webkit-box;height:42px;border-bottom:1px solid #c2c2c2;}
+.bookSear .tabBox .tit li{font-size:16px;text-align:center;height:42px;line-height:42px;-webkit-box-flex: 1;}
+.bookSear .tabBox .tit li.cur{border-bottom:2px solid #0e6fe7;color:#0e6fe7}
+
+.tabBox .con{position:relative; overflow:hidden; height:100%;height:auto;}
+.tabBox .con ul{position:absolute; left:0px; top:0px; overflow:hidden; zoom:1; width:100%; height:100%;}
+.tabBox .con li{float:left; width:100%; height:100%;}
+.tabBox .con li .ct{padding:10px;}
+/* .tabBox .con a{display:block;padding:10px 0 5px;border-bottom:1px solid #e0e0e0;} */
+.tabBox .con span{display:block; word-wrap:break-word; word-break:break-all;}
+.tabBox .con .listBox{-webkit-box-flex:1;}
+.tabBox .con .listBox em{display:block;}
+.tabBox .con .listBox em.name{font-size:14px; line-height:18px;}
+.tabBox .con .listBox em.time{color:#999; margin-top:2px;}
+.tabBox .con .more{display:block;height:42px;line-height:42px;color:#0e6fe7;cursor:pointer;}
+/*2014-05-16  导航end*/

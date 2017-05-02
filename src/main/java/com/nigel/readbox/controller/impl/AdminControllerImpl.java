@@ -1,7 +1,6 @@
 package com.nigel.readbox.controller.impl;
 
 import com.nigel.readbox.common.constant.Result;
-import com.nigel.readbox.common.util.Util;
 import com.nigel.readbox.controller.AdminController;
 import com.nigel.readbox.entity.AdminInfo;
 import com.nigel.readbox.service.AdminService;
@@ -37,21 +36,18 @@ public class AdminControllerImpl implements AdminController {
         }
     }
 
-    public String delAdminInfo(@RequestParam String adminCode) {
-
-        int result = adminService.delAdminInfo(adminCode);
-
-        if( result > 0)
-        {
-            return Result.SUCCESS;
-        }else
-        {
-            return  Result.FAIL;
+    public String delAdminInfo(@RequestParam List<String> adminCodes) {
+        if(adminCodes == null){
+            return Result.FAIL;
         }
+        for (String adminCode: adminCodes) {
+            adminService.delAdminInfo(adminCode);
+        }
+        return Result.SUCCESS;
     }
 
-    public List<AdminInfo> searchListByAdminInfo(@RequestParam String search) {
-        return adminService.searchListByAdminInfo(Util.convert(search));
+    public List<AdminInfo> searchListByAdminInfo() {
+       return adminService.searchAllAdminInfo() ;
     }
 
     public AdminInfo searchAdminInfo(@RequestParam String adminCode) {

@@ -33,6 +33,10 @@ public class AdminServiceImpl implements AdminService {
         return adminInfoMapper.selectListByLike(search);
     }
 
+    public List<AdminInfo> searchAllAdminInfo() {
+        return adminInfoMapper.selectAll();
+    }
+
     public AdminInfo searchAdminInfo(String adminCode) {
         return adminInfoMapper.selectByAdminCode(adminCode);
     }

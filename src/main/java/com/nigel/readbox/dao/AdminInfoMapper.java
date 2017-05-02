@@ -22,6 +22,8 @@ public interface AdminInfoMapper {
 
     List<AdminInfo> selectListByLike(String search);
 
+    List<AdminInfo> selectAll();
+
     int updateByPrimaryKeySelective(AdminInfo record);
 
     int updateByPrimaryKey(AdminInfo record);

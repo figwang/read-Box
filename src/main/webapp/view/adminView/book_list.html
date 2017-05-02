@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>图书管理</title>
+    <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+	<link href="css/examples.css" rel="stylesheet">
+    
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>图书查询管理</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>                   
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content">
+				<div class="container-fluid">  
+				    <div id="toolbar" class="btn-group">
+				        <a href=""><button type="button" id="add" class="btn btn-default" >
+                        <i class="glyphicon glyphicon-plus"></i>
+				        </button>
+                        </a>
+				        <a><button onclick="editAdmin();" type="button" id="edit" class="btn btn-default">
+                        <i class="glyphicon glyphicon-pencil"></i>
+				        </button>
+                        </a>
+				        <a><button type="button" onclick="deleteAdmin();" id="delete" class="btn btn-default">
+                        <i class="glyphicon glyphicon-trash"></i>
+				        </button>
+                        </a>
+                        <span class="alert"></span>
+				    </div>
+				    <table id="adminList" >
+                        <thead style="background:#f5f5f5"/>
+				    </table>
+				</div>  	   
+            </div>
+        </div>
+    </div>
+    <div id="modal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>ID</label>
+                        <input type="text" class="form-control" name="id" placeholder="ID">
+                    </div>
+                    <div class="form-group">
+                        <label>编号</label>
+                        <input type="number" class="form-control" name="adminCode" placeholder="用户编号">
+                    </div>
+                    <div class="form-group">
+                        <label>名字</label>
+                        <input type="number" class="form-control" name="adminName" placeholder="输入姓名">
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input type="number" class="form-control" name="adminPwd" placeholder="用户密码">
+                    </div>
+                    <div class="form-group">
+                        <label>电话</label>
+                        <input type="text" class="form-control" name="adminPhone" placeholder="输入电话">
+                    </div>
+                    <div class="form-group">
+                        <label>单位</label>
+                        <input type="text" class="form-control" name="adminCompany" placeholder="所在单位">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary submit">Submit</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+
+    <!-- 全局js -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-table/bootstrap-table.js"></script>
+	<script src="js/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+
+    <!-- 自定义js -->
+    <script src="js/content.js"></script>
+	
+	<script type="text/javascript">            
+     $(function() {  
+            querys();
+     })
+  
+    function querys() {
+    $modal = $('#modal').modal({show: false}),
+    $alert = $('.alert').hide();
+    $("#edit").attr({"disabled":true});
+    $("#delete").attr({"disabled":true});
+    $("#adminList").bootstrapTable({
+        url : 'http://localhost:8080/readBox/admin/searchListByAdminInfo.do',
+        //height : '500',
+		search:true,
+        pagination : true, // 分页  
+        //striped : true,  是否显示行间隔色
+        showHeader:true,
+        cache:true,
+        //checkboxHeader:true,
+        //showFooter:true,
+        //showColumns:true,
+        showToggle:true,
+        showPaginationSwitch:true,
+        //cardView:true,
+        //detailView:true,
+        maintainSelected:true,//设置为 true 在点击分页按钮或搜索按钮时，将记住checkbox的选择项
+        pageList : [ 5, 10, 20 ],  
+        toolbar : "#toolbar",// 指定工具栏
+        uniqueId:"id",
+        showColumns : true, // 显示隐藏列
+        showRefresh : true, // 显示刷新按钮
+        columns : [ {  
+            field : 'state',
+            checkbox : true,  
+            align : 'center',  
+            valign : 'small',
+			
+        }, {  
+            title : 'id',
+            field : 'id', // 字段
+            align : 'center', // 对齐方式（左 中 右）  
+            valign : 'small', //
+            sortable : true,
+        }, {  
+            title : '用户编号',
+            field : 'adminCode',
+            align : 'center',  
+            valign : 'middle',  
+            sortable : true  
+        }, {  
+            title : '姓名',  
+            field : 'adminName',
+            align : 'center',  
+            valign : 'middle',  
+            sortable : true  
+        }, {  
+            title : '密码',
+            field : 'adminPwd',
+            align : 'center',  
+            valign : 'middle',  
+            sortable : true  
+        }, {
+            title : '电话',
+            field : 'adminPhone',
+            align : 'center',
+            valign : 'middle',
+            sortable : true
+        }, {
+            title : '公司',
+            field : 'adminCompany',
+            align : 'center',  
+            valign : 'middle',
+            sortable : true ,
+        } ],
+        onCheck:function(){
+            var selectRow = $("#adminList").bootstrapTable('getSelections');
+            if(selectRow.length == 1){
+                $("#edit").attr({"disabled":false});
+            }else{
+                $("#edit").attr({"disabled":true});
+            }
+            $("#delete").attr({"disabled":false});
+
+        },
+        onCheckAll:function(){
+            $("#edit").attr({"disabled":true});
+            $("#delete").attr({"disabled":false});
+        },
+        onUncheckAll:function(){
+            $("#edit").attr({"disabled":true});
+            $("#delete").attr({"disabled":true});
+        },
+        onUncheck:function(){
+            $("#edit").attr({"disabled":true});
+            $("#delete").attr({"disabled":true});
+        }
+
+    })  
+}  
+
+/** 编辑数据 */  
+function editAdmin() {
+    var selectRow = $("#adminList").bootstrapTable('getSelections');
+    if (selectRow.length != 1) {  
+        alert('请选择并只能选择一条数据进行编辑！');
+        return false;  
+    } else {  
+        window.location = createUrl("admin/hrEmployee/view?username=" + selectRow[0].userName);  
+    }  
+}  
+/** 
+ * 删除数据 
+ */  
+function deleteAdmin() {
+    var selectRow = $("#adminList").bootstrapTable('getSelections');
+
+        if (selectRow.length < 1) {
+        alert('请选择一条或多条数据进行删除！');
+        } else {
+            if(confirm('确定要删除所选数据？'))
+            {
+                var adminCodes = [];
+                for (var i=0;i<selectRow.length;i++){
+                    adminCodes.push(selectRow[i].adminCode);
+                }
+
+                $.ajax({
+                    url:'http://localhost:8080/readBox/admin/delAdminInfo.do',
+                    traditional: true,  //阻止深度序列化，向后台传送数组
+                    data:{adminCodes:adminCodes},
+                    contentType:'application/json',
+                    success:function(msg){
+                        if(msg == "success"){
+                            $("#adminList").bootstrapTable('refresh');
+                            showAlert('成功删除  '+ selectRow.length+'  条记录！', 'success');
+                        }else{
+                            showAlert('删除失败!', 'danger');
+                        }
+
+                    }
+                })
+            }
+    }  
+}
+
+function showAlert(title, type) {
+         $alert.attr('class', 'alert alert-' + type || 'success')
+                 .html('<i class="glyphicon glyphicon-check"></i> ' + title).show();
+         setTimeout(function () {
+             $alert.hide();
+         }, 3000);
+     }
+</script>
+</body>
+
+</html>

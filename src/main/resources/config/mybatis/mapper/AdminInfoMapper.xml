@@ -33,7 +33,15 @@
     where
     admin_code like #{search} OR
     admin_name like #{search} OR
-    admin_phone like #{search}
+    admin_phone like #{search} OR
+    admin_company like #{search}
+    order by admin_code ASC
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from admin_info
     order by admin_code ASC
   </select>
 

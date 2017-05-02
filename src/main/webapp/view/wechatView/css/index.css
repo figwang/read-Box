@@ -1,0 +1,12 @@
+
+.search {margin: 0px; padding: 0px 0px 0.625px; width: 100%; position: relative; border-bottom-width: 1px; border-bottom-color: rgb(234, 234, 234); border-bottom-style: solid; text-align: center; color: rgb(53, 53, 53); font-family: 'microsoft yahei'; font-size: 24px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; -webkit-text-stroke-width: 0px; background: rgb(246, 246, 246);}
+.styleHigh{margin: 0px; padding: 0px;}
+.styleInput{margin: 12.796875px auto; padding: 0px; width: 100%; display: inline; border: 1px solid rgb(216, 216, 216); height: 3em; line-height: 3em; box-shadow: rgb(238, 238, 238) 0px 1px 2px; border-radius: 4px; -webkit-box-shadow: rgb(238, 238, 238) 0px 1px 3px inset; -webkit-appearance: none; text-indent: 1em;}
+.submit{margin: 0px; padding: 0px; position: absolute; right: 0px; top: 0px; border: 0px; width: 96px; height: 67.625px; background: url(../image/1.png) 50% 50% no-repeat;}
+.menu11{margin: 0px; padding: 0px; list-style: none; overflow: hidden !important; border-radius: 0.2em; color: rgb(53, 53, 53); font-family: 'microsoft yahei'; font-size: 13.0px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);}
+.styleLi{margin: 0px; padding: 0px; float: left; width: 33%; position: relative; border-bottom-color: rgb(242, 242, 242); border-bottom-style: solid; border-bottom-width: 1px; border-right-color: rgb(242, 242, 242); border-right-style: solid; border-right-width: 1px;}
+.styleA{text-decoration: none; color: rgb(53, 53, 53); display: block; height: 9.0em; text-align: center;}
+.styleImg{border: 0px; height: 3.1em;width:3.1em ;margin: 25px 10px 21.109375px; vertical-align: middle;}
+.styleSpan{display: inline-block; height: 1.3em;margin: 0px 0px 0px ;color: rgb(73, 73, 73); font-weight: bold; overflow: hidden;}
+.styleUl{width: 100%; position: relative;}
+.styleLi2{margin: 0px; padding: 0px; float: left; width: 33%; position: relative; border-bottom-color: rgb(242, 242, 242); border-bottom-style: solid; border-bottom-width: 1px; border-right-color: rgb(242, 242, 242);}

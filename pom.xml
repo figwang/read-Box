@@ -31,7 +31,11 @@
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.github.sd4324530</groupId>
+            <artifactId>fastweixin</artifactId>
+            <version>1.3.14</version>
+        </dependency>
         <!--2.日志配置-->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>

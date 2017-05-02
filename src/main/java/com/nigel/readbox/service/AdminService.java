@@ -19,6 +19,8 @@ public interface AdminService {
 
     public List<AdminInfo> searchListByAdminInfo(String search);
 
+    public List<AdminInfo> searchAllAdminInfo();
+
     public AdminInfo searchAdminInfo(String adminCode);
 
     public int editAdminInfo(AdminInfo adminInfo);
