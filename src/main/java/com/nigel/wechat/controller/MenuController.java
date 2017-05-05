@@ -60,9 +60,16 @@ public class MenuController {
         menuButton.setName("主页");
         menuButton.setMediaId("Med001");
         menuButton.setType(MenuType.VIEW);
-        menuButton.setUrl("http://sevenfan.imwork.net/readBox/view/wechatView/index.html");
+        menuButton.setUrl("http://sevenfan.imwork.net/readBox/view/wechatView/readCloud/viewer.html");
+        MenuButton menuButton2 = new MenuButton();
+        menuButton2.setKey("002");
+        menuButton2.setName("云阅读");
+        menuButton2.setMediaId("Med002");
+        menuButton2.setType(MenuType.VIEW);
+        menuButton2.setUrl("http://sevenfan.imwork.net/readBox/view/wechatView/index.html");
         List<MenuButton> a = new ArrayList<MenuButton>();
         a.add(menuButton);
+        a.add(menuButton2);
         m.setButton(a);
         return menuAPI.createMenu(m);
     }
