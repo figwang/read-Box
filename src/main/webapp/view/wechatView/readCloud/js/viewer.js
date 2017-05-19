@@ -27,7 +27,7 @@ PDFJS.workerSrc = './js/pdf.worker.js';
 PDFJS.cMapUrl = '../../build/dist/cmaps/';
 PDFJS.cMapPacked = true;
 
-var DEFAULT_URL = './pdf/diaoge.pdf';
+var DEFAULT_URL = './pdf/图书馆读者服务平台开题报告.pdf';
 var DEFAULT_SCALE_DELTA = 1.1;
 var MIN_SCALE = 0.25;
 var MAX_SCALE = 10.0;

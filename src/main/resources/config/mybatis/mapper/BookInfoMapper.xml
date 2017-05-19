@@ -34,19 +34,19 @@
     where book_ISBN = #{bookIsbn,jdbcType=VARCHAR}
   </select>
 
-  <select id="selectListByLike" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectListByLike" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from book_info
     where
     book_company = #{bookCompany,jdbcType=VARCHAR} AND
-    book_ISBN like #{search} OR
-    book_author like #{search} OR
-    book_publish_house like #{search} OR
-    book_publish_date like #{search} OR
-    book_iscloud like #{search} OR
-    book_price like #{search} OR
-    book_introduce like #{search}
+    book_ISBN like #{search,jdbcType=VARCHAR} OR
+    book_author like #{search,jdbcType=VARCHAR} OR
+    book_publish_house like #{search,jdbcType=VARCHAR} OR
+    book_publish_date like #{search,jdbcType=VARCHAR} OR
+    book_iscloud like #{search,jdbcType=VARCHAR} OR
+    book_price like #{search,jdbcType=VARCHAR} OR
+    book_introduce like #{search,jdbcType=VARCHAR}
     order by book_ISBN ASC
   </select>
 

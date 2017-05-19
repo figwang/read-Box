@@ -47,8 +47,8 @@ public class BookControllerImpl  implements BookController {
         }
     }
 
-    public List<BookInfo> searchListByBookInfo(@RequestBody String search) {
-        return null;
+    public List<BookInfo> searchListByBookInfo() {
+        return bookService.searchListByBookInfo("%%","TSG-BJ-001");
     }
 
     public BookInfo searchBookInfo(@RequestBody String bookIsbn) {

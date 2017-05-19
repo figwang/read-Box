@@ -14,7 +14,6 @@ public class Main {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:config/spring/applicationContext-*.xml");
         AdminService adminService;
         adminService = (AdminService) ctx.getBean("adminServiceImpl");
-
         System.out.println(adminService.searchListByAdminInfo(Util.convert("AM")));
     }
 }

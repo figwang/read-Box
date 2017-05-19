@@ -1,10 +1,7 @@
 package com.nigel.readbox.controller;
 
 import com.nigel.readbox.entity.BookInfo;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -43,7 +40,7 @@ public interface BookController {
      */
     @RequestMapping(value = "/searchListByBookInfo.do", method = RequestMethod.GET)
     public @ResponseBody
-    List<BookInfo> searchListByBookInfo(@RequestBody String search);
+    List<BookInfo> searchListByBookInfo();
 
     /**
      * 查询图书详细信息

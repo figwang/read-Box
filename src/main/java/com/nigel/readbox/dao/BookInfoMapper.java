@@ -1,6 +1,7 @@
 package com.nigel.readbox.dao;
 
 import com.nigel.readbox.entity.BookInfo;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public interface BookInfoMapper {
 
     BookInfo selectByBookIsbn(String bookIsbn);
 
-    List<BookInfo> selectListByLike(String search , String bookCompany);
+    List<BookInfo> selectListByLike(@Param("search")String search , @Param("bookCompany")String bookCompany);
 
     int updateByBookIsbnSelective(BookInfo record);
 

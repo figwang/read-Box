@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <title>图书信息管理</title>
+    <title>管理员信息管理</title>
     <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.css" rel="stylesheet">
     <link href="css/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
@@ -22,7 +22,7 @@
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>图书信息管理</h5>
+                <h5>管理员信息管理</h5>
                 <div class="ibox-tools">
                     <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
@@ -69,33 +69,29 @@
                         <input type="text" class="form-control" name="id" placeholder="ID">
                     </div>
                     <div class="form-group">
-                        <label>ISBN</label>
-                        <input type="text" class="form-control" name="bookIsbn" placeholder="ISBN编码...">
+                        <label>编号</label>
+                        <input type="text" class="form-control" name="adminCode" placeholder="用户编号...">
                     </div>
                     <div class="form-group">
-                        <label>图书名称</label>
-                        <input type="text" class="form-control" name="bookName" placeholder="输入图书名称...">
+                        <label>名字</label>
+                        <input type="text" class="form-control" name="adminName" placeholder="输入姓名...">
                     </div>
                     <div class="form-group">
-                        <label>作者</label>
-                        <input type="text" class="form-control" name="bookAuthor" placeholder="图书作者...">
+                        <label>密码</label>
+                        <input type="text" class="form-control" name="adminPwd" placeholder="用户密码...">
                     </div>
                     <div class="form-group">
-                        <label>出版社</label>
-                        <input type="text" class="form-control" name="bookPublishHouse" placeholder="输入出版社...">
+                        <label>电话</label>
+                        <input type="text" class="form-control" name="adminPhone" placeholder="输入电话...">
                     </div>
                     <div class="form-group">
-                        <label>价格</label>
-                        <input type="text" class="form-control" name="bookPrice" placeholder="图书价格">
-                    </div>
-                    <div class="form-group">
-                        <label>图书简介</label>
-                        <textarea class="form-control" name="bookIntroduce" placeholder="输入图书简介"></textarea>
+                        <label>图书馆</label>
+                        <input type="text" class="form-control" name="adminCompany" placeholder="所在图书馆">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary submit">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关 闭</button>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-primary submit">提 交</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -121,7 +117,7 @@
     $("#edit").attr({"disabled":true});
     $("#delete").attr({"disabled":true});
     $("#adminList").bootstrapTable({
-        url : 'http://localhost:8080/readBox/book/searchListByBookInfo.do',
+        url : 'http://localhost:8080/readBox/admin/searchListByAdminInfo.do',
         //height : '500',
 		search:true,
         pagination : true, // 分页  
@@ -154,39 +150,32 @@
             valign : 'small', //
             sortable : true,
         }, {  
-            title : 'ISBN',
-            field : 'bookIsbn',
+            title : '编号',
+            field : 'adminCode',
             align : 'center',  
             valign : 'middle',  
             sortable : true  
         }, {  
-            title : '图书名称',
-            field : 'bookName',
+            title : '姓名',  
+            field : 'adminName',
             align : 'center',  
             valign : 'middle',  
             sortable : true  
         }, {  
-            title : '作者',
-            field : 'bookAuthor',
+            title : '密码',
+            field : 'adminPwd',
             align : 'center',  
             valign : 'middle',  
             sortable : true  
         }, {
-            title : '出版社',
-            field : 'bookPublishHouse',
+            title : '电话',
+            field : 'adminPhone',
             align : 'center',
             valign : 'middle',
             sortable : true
         }, {
-            title : '价格',
-            field : 'bookPrice',
-            align : 'center',
-            valign : 'middle',
-            sortable : true ,
-        }
-        , {
-            title : '图书简介',
-            field : 'bookIntroduce',
+            title : '图书馆',
+            field : 'adminCompany',
             align : 'center',  
             valign : 'middle',
             sortable : true ,
@@ -225,7 +214,7 @@ function editAdmin() {
         return false;
         }
         var row = selectRow[0];
-        var title = "图书信息修改";
+        var title = "管理员信息修改";
         row = row || {
                     id: '',
                     adminCode: '',

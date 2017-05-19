@@ -15,4 +15,5 @@ public class WeixinConfig {
     public static final String token = "nigel";
 
     public static ApiConfig config = new  ApiConfig(appid, secret);
+
 }

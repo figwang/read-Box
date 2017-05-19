@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="read-Box:war exploded">
-    <output-path>D:/DevelopSoft/Tool/Tomcat/apache-tomcat-8.0.3/webapps/read-Box</output-path>
+    <output-path>$PROJECT_DIR$/target/read-Box</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">

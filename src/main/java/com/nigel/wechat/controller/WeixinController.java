@@ -3,6 +3,7 @@ import com.github.sd4324530.fastweixin.handle.EventHandle;
 import com.github.sd4324530.fastweixin.handle.MessageHandle;
 import com.github.sd4324530.fastweixin.message.BaseMsg;
 import com.github.sd4324530.fastweixin.message.TextMsg;
+import com.github.sd4324530.fastweixin.message.req.BaseEvent;
 import com.github.sd4324530.fastweixin.message.req.TextReqMsg;
 import com.github.sd4324530.fastweixin.servlet.WeixinControllerSupport;
 import com.nigel.wechat.common.constant.WeixinConfig;
@@ -59,7 +60,7 @@ import java.util.List;
 
                 public BaseMsg handle(TextReqMsg textReqMsg) {
 
-                    return new TextMsg("调哥!001----http://sevenfan.imwork.net/readBox/view/wechatView/account_bind.html"+textReqMsg.getContent());
+                    return new TextMsg("调哥!001----https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx46126c68d98f25b7&redirect_uri=http://sevenfan.imwork.net/readBox/view/wechatView/readCloud/viewer.html&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"+textReqMsg.getContent());
                 }
 
                 public boolean beforeHandle(TextReqMsg textReqMsg) {
@@ -76,6 +77,10 @@ import java.util.List;
             handles.add(null);
             return handles;
         }
+
+    protected BaseMsg handleSubscribe(BaseEvent event) {
+        return new TextMsg("您已成功关注 ! 图书馆读者服务平台 !");
+    }
     }
 
 
